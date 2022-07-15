@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+<p class="timertext" 
+style="font-size: 1.5rem;">
+You are idle for
+<span class="secs"></span> seconds.
+</p>
+
+<div class="row my-3">
+    <div class="col-md-3">
+
+    </div>
+    <div class="col-md-5">
+        {% for p in product %}
+        <hr>
+        <div class="row featurette">
+            <div class="col-12">
+                <h2 class="featurette-heading fw-normal lh-1 fw-bold">{{p.name.capitalize}}<span class="text-muted"></span></h2>
+                <p class="lead">{{p.description}}</p>
+                <p class="lead">Price :- Rs.{{p.price}} per Serving</p>
+                {% if p.name in cart %}
+                <a class="btn btn-success py-1 add-to-cart" data-productid="{{p.id}}" data-action="add" style="float:right ;"><i class="fa-solid fa-plus"></i></a>
+                <a class="btn btn-danger py-1 mx-2 add-to-cart" data-productid="{{p.id}}" data-action="remove" style="float:right ;"><i class="fa-solid fa-minus"></i></a>
+                {% else %}
+                <a class="btn btn-outline-dark text-success fw-bold btn-sm add-to-cart" data-productid="{{p.id}}" data-action="add" style="float:right ;">Add to Cart</a>
+                {% endif %}
+            </div>
+        </div> 
+        {% endfor %}
+    </div>
+    <div class="col-md-4">
+        <div class="container">
+            <h3 class="text-success bg-dark p-2 fw-bold">Cart Details</h3>
+            {% for p in cart %}
+            <div class="row featurette">
+                    <div class="col-8">
+                        <h5 class="featurette-heading fw-normal  fw-bold">{{p.dish.name.capitalize}}<span class="text-muted"></span></h5>
+                        <h8 class="">Price :- Rs.{{p.dish.price}} *{{p.quantity}} ={{p.total_price}}</h8>
+                    </div>
+                    <div class="col-4">
+                        <a class="btn btn-success py-1 add-to-cart" data-productid="{{p.dish.id}}" data-action="add" ><i class="fa-solid fa-plus"></i></a>
+                        <a class="btn btn-danger py-1 mx-2 add-to-cart" data-productid="{{p.dish.id}}" data-action="remove" ><i class="fa-solid fa-minus"></i></a>
+                    </div>
+            </div> 
+            {% endfor %}
+            <hr>
+            <h3 class="featurette-heading fw-normal  fw-bold">Total Price = {{cart_total}} Rs<span class="text-muted"></span></h3>
+            <button class="btn btn-outline-success">Buy Now</button>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock body%}
