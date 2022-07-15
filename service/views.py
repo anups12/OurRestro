@@ -4,16 +4,10 @@ from django.shortcuts import render, redirect
 from . forms import AddNewProduct, UserCreate
 from . models import *
 from django.contrib.auth import logout, login, authenticate
-from win10toast import ToastNotifier
 
 
 # Create your views here.
-def Message(request):
-    data = json.loads(request.body)
-    user = data['user']
-    hr=ToastNotifier()
-    hr.show_toast("Notification", f" Hello {user} You are inactive for 5 minutes")
-    return JsonResponse('Data added successfully', safe=False)
+
 
 
 def Home(request):
