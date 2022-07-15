@@ -2,20 +2,68 @@
 {% load static %}
 
 {% block body %}
-<p class="timertext" 
-style="font-size: 1.5rem;">
-You are idle for
-<span class="secs"></span> seconds.
-</p>
+<p class="timertext" ></p>
 
 <div class="row my-3">
-    <div class="col-md-3">
-
+    <div class="col-md-3 shadow2">
+        <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-info" style="width: 280px;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+              <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+              <span class="fs-4">OurRestro</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <a href="#" class="nav-link active" aria-current="page">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                  Orders
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                  Products
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link text-white">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                  Customers
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+              <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>mdo</strong>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Sign out</a></li>
+              </ul>
+            </div>
+          </div>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-5 shadow2 ">
         {% for p in product %}
         <hr>
-        <div class="row featurette">
+        <div class="row featurette px-2 ">
             <div class="col-12">
                 <h2 class="featurette-heading fw-normal lh-1 fw-bold">{{p.name.capitalize}}<span class="text-muted"></span></h2>
                 <p class="lead">{{p.description}}</p>
@@ -31,7 +79,7 @@ You are idle for
         {% endfor %}
     </div>
     <div class="col-md-4">
-        <div class="container">
+        <div class="container shadow2">
             <h3 class="text-success bg-dark p-2 fw-bold">Cart Details</h3>
             {% for p in cart %}
             <div class="row featurette">
@@ -47,7 +95,7 @@ You are idle for
             {% endfor %}
             <hr>
             <h3 class="featurette-heading fw-normal  fw-bold">Total Price = {{cart_total}} Rs<span class="text-muted"></span></h3>
-            <button class="btn btn-outline-success">Buy Now</button>
+            <button class="btn btn-outline-success m-3">Buy Now</button>
         </div>
     </div>
 </div>

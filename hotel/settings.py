@@ -26,7 +26,7 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["ourrestro.herokuapp.com", "localhost"]
+ALLOWED_HOSTS = ["ourrestro.herokuapp.com", "127.0.0.1"]
 
 
 # Application definition
@@ -124,6 +124,7 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
+STATIC_ROOT=os.path.join(BASE_DIR , 'staticfiles')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

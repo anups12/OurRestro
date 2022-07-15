@@ -32,25 +32,25 @@ function startIdleTimer() {
         timer seconds */
     currSeconds++;
     if(currSeconds==300){
-        NotifyUser(user)
+        showNotification()
     }
 }
 
+function showNotification(){
+    const notification = new Notification(` Hey ${user} Hope you are good`, {
+        body:`Hello ${user} you are inactive for more than 5 minutes`
+    });
+    notification.onclick = (e)=>{
+        window.location.href='/'
+    }
+}
 
-function NotifyUser(user) {
-    var url = '/message/'
-    fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrftoken
-        },
-        body: JSON.stringify({ 'user': user})
-    })
-        .then((response) => {
-            return response.json()
-        }).then((data) => {
-            console.log(data);
+if (user !== 'AnonymousUser'){
+    if(Notification.permission !== "denied" || Notification.permission==='default'){
+        Notification.requestPermission().then(permission=>{
+            if(permission==='granted'){
+                resetTimer()
+            }
         })
-
+    }
 }
