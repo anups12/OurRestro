@@ -31,7 +31,7 @@ function startIdleTimer() {
     /* Increment the
         timer seconds */
     currSeconds++;
-    if(currSeconds==30){
+    if(currSeconds==300){
         showNotification()
     }
 }
